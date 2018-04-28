@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.ball{
+			width: 40px;
+			height: 40px;
+			border-radius: 20px;
+		}
+		.ball1{
+			background: red;
+		}
+		.ball2{
+			background: green;
+		}
+		.ball3{
+			background: yellow;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="ball ball1" style="margin-left: 0;"></div>
+			<div class="ball ball2" style="margin-left: 0;"></div>
+			<div class="ball ball3" style="margin-left: 0;"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+			var ball1=document.querySelector('.ball1');
+			var ball2=document.querySelector('.ball2');
+			var ball3=document.querySelector('.ball3');
+			
+			function animate(ball,destin,cb){
+//				console.log(45455454);
+				setTimeout(function(){
+					var marLeft=parseInt(ball.style.marginLeft,10);
+					if (marLeft===destin) {
+						cb&&cb();
+					} else{
+						if (marLeft<destin) {
+							marLeft++;
+						} else{
+							marLeft--;
+						}
+						//ball.style.marginLeft=*px
+						ball.style.marginLeft=marLeft+'px';
+						animate(ball,destin,cb);
+					}
+				},5)
+			}
+			animate(ball1,100,function(){
+				animate(ball2,200,function(){
+					animate(ball3,300,function(){
+						animate(ball3,50,function(){
+							animate(ball2,50,function(){
+								animate(ball1,50,function(){
+									console.log(45455454);
+								})
+							})
+						})
+					})
+				})
+			})
+	</script>
+</html>
